@@ -1,0 +1,114 @@
+body {
+  background-color: #7a7169;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 40px 0px 0px 0px;
+  user-select: none;
+  max-width: 600px;
+  margin: auto;
+}
+.field {
+  width: 600px;
+  height: 600px;
+  position: relative;
+  opacity: 0.9;
+  border-radius: 5px;
+  border: 4px solid rgb(56, 34, 20);
+  box-shadow: 0px 0px 3px 3px rgb(56, 34, 20);
+  background-color: rgb(39, 23, 14);
+}
+
+.square {
+  height: 150px;
+  width: 150px;
+  background-color: rgb(255, 166, 0);
+  border-radius: 20px;
+  box-shadow: inset 0 0 35px 5px rgb(117, 74, 9);
+  position: absolute;
+  cursor: pointer;
+}
+.text-number {
+  text-align: center;
+  line-height: 150px;
+  font-weight: 800;
+  font-size: 80px;
+  opacity: 0.8;
+}
+.square {
+}
+.modal-window-win {
+  display: none;
+  position: fixed;
+  background-color: rgb(219, 183, 66);
+  border: 4px solid rgb(77, 66, 31);
+  box-shadow: inset 0 0 9px 5px rgba(117, 74, 9, 0.719), 0 0 25px 5px rgba(0, 0, 0, 0.856);
+  width: 400px;
+  height: 160px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 40px;
+}
+.modal-window-win.show {
+  display: block;
+}
+.modal-window-win__text {
+  text-align: center;
+  padding: 35px 0px 20px 0px;
+  font-size: 50px;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px black, 0 0 1px black;
+  color: green;
+}
+.modal-window-win__text-2 {
+  text-align: center;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 400;
+  color: rgb(172, 44, 44);
+}
+
+.btn-new-generation {
+  margin: 20px 50px 0px 0px;
+  display: inline-block;
+  color: rgb(255, 253, 253);
+  cursor: pointer;
+  text-align: center;
+  font-weight: 500;
+  font-size: 22px;
+  padding: 10px;
+  opacity: 0.8;
+  border-radius: 5px;
+  border: 2px solid rgb(56, 34, 20);
+  box-shadow: 0px 0px 3px 3px rgb(56, 34, 20);
+  background-color: rgb(39, 23, 14);
+}
+.down-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+.counter-step {
+  display: block;
+  text-align: center;
+  font-size: 55px;
+  font-weight: 700;
+  color: rgb(56, 34, 20);
+  padding: 0px 0px 20px 0px;
+  text-shadow: 0px 0px 4px rgb(255, 255, 255);
+}
+
+.stopwatch {
+  display: block;
+  margin: 20px 0px 0px 0px;
+  display: inline-block;
+  text-align: center;
+  font-size: 55px;
+  font-weight: 700;
+  color: rgb(56, 34, 20);
+  padding: 0px 0px 20px 0px;
+  text-shadow: 0px 0px 4px rgb(255, 255, 255);
+}
