@@ -1,7 +1,6 @@
 "use strict";
 const field = document.querySelector(".field"),
     dist = 147,
-    dist2 = 150,
     modalWin = document.querySelector(".modal-window-win"),
     boxStopWatch = document.querySelector("#stopwatch");
 

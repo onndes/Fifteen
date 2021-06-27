@@ -7,7 +7,7 @@ body {
   height: 100%;
   padding: 40px 0px 0px 0px;
   user-select: none;
-  max-width: 600px;
+  width: 600px;
   margin: auto;
 }
 .field {
@@ -30,6 +30,7 @@ body {
   position: absolute;
   cursor: pointer;
 }
+
 .text-number {
   text-align: center;
   line-height: 150px;
@@ -84,7 +85,7 @@ body {
   border-radius: 5px;
   border: 2px solid rgb(56, 34, 20);
   box-shadow: 0px 0px 3px 3px rgb(56, 34, 20);
-  background-color: rgb(39, 23, 14);
+  background-color: #27170e;
 }
 .down-info {
   display: flex;
