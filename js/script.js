@@ -5,13 +5,16 @@ const field = document.querySelector(".field"),
     boxStopWatch = document.querySelector("#stopwatch");
 
 let counerStopTimer = 0;
+
+const checkPosition = {};
 function nowGanerateGame() {
-    let randomArrNum = [];
-    const checkPosition = {};
-    const position = {};
-    let counterStep = 0;
     const spanStep = document.querySelector("#step");
+    const position = {};
+    let randomArrNum = [];
+    let counterStep = 0;
+
     spanStep.textContent = counterStep;
+
     generateRandomNumArr();
 
     function generateHTMLSquare(id) {
@@ -23,11 +26,6 @@ function nowGanerateGame() {
         square.classList.add("square", `square-${id}`);
         square.id = `el-${id}`;
         field.append(square);
-    }
-
-    function generateRandomNum(col = 16) {
-        const num = Math.floor(Math.random() * (col - 1) + 1);
-        return num;
     }
 
     function generateRandomNumArr() {
@@ -51,7 +49,7 @@ function nowGanerateGame() {
     }
 
     function creatingSquares() {
-        randomArrNum.forEach((el, idx) => {
+        randomArrNum.forEach((el) => {
             generateHTMLSquare(el);
         });
     }
@@ -82,7 +80,6 @@ function nowGanerateGame() {
                                       left: ${position["p" + i][1]}px`;
         }
     }
-
     randomPlacement();
 
     function checkEmptyPositionTest() {
@@ -127,36 +124,42 @@ function nowGanerateGame() {
             }
         }
     }
-    function checkWin() {
-        let trigger = 0;
-        let c = 15;
-        for (let i = 1; i <= c; i++) {
-            let el = document.querySelector(`#el-${i}`);
-            let top = parseInt(window.getComputedStyle(el).top);
-            let left = parseInt(window.getComputedStyle(el).left);
-            if (checkPosition[`pos${i}`][1] == top && checkPosition[`pos${i}`][2] == left) {
-                trigger++;
-            } else {
-                trigger;
-            }
-        }
-
-        if (trigger == c) {
-            counerStopTimer++;
-            const pauseAlertWin = setTimeout(() => {
-                modalWin.classList.add("show");
-            }, 0);
-            const btnNewGame = document.querySelector(".modal-window-win__text-2");
-            btnNewGame.addEventListener("click", () => {
-                modalWin.classList.remove("show");
-                window.location.reload();
-                // field.innerHTML = "";
-                // nowGanerateGame();
-            });
-        }
-    }
 }
 nowGanerateGame();
+
+function checkWin() {
+    let trigger = 0;
+    let c = 15;
+    for (let i = 1; i <= c; i++) {
+        let el = document.querySelector(`#el-${i}`);
+        let top = parseInt(window.getComputedStyle(el).top);
+        let left = parseInt(window.getComputedStyle(el).left);
+        if (checkPosition[`pos${i}`][1] == top && checkPosition[`pos${i}`][2] == left) {
+            trigger++;
+        } else {
+            trigger;
+        }
+    }
+
+    if (trigger == c) {
+        counerStopTimer++;
+        const pauseAlertWin = setTimeout(() => {
+            modalWin.classList.add("show");
+        }, 0);
+        const btnNewGame = document.querySelector(".modal-window-win__text-2");
+        btnNewGame.addEventListener("click", () => {
+            modalWin.classList.remove("show");
+            window.location.reload();
+            // field.innerHTML = "";
+            // nowGanerateGame();
+        });
+    }
+}
+
+function generateRandomNum(col = 16) {
+    const num = Math.floor(Math.random() * (col - 1) + 1);
+    return num;
+}
 
 function checkPositionWin(randomArrNum) {
     let checkNum = 0;
