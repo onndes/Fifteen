@@ -6,14 +6,14 @@ const field = document.querySelector(".field"),
 
 let counerStopTimer = 0;
 function nowGanerateGame() {
-    const randomArrNum = [];
+    let randomArrNum = [];
     const checkPosition = {};
     const position = {};
     let counterStep = 0;
     const spanStep = document.querySelector("#step");
     spanStep.textContent = counterStep;
     generateRandomNumArr();
-    // checkPositionWin(randomArrNum);
+
     function generateHTMLSquare(id) {
         const square = document.createElement("div"),
             p = document.createElement("p");
@@ -44,7 +44,10 @@ function nowGanerateGame() {
                 randomArrNum.push(num);
             }
         }
-        if (checkPositionWin(randomArrNum)) nowGanerateGame();
+        if (checkPositionWin(randomArrNum)) {
+            randomArrNum = [];
+            generateRandomNumArr();
+        }
     }
 
     function creatingSquares() {
@@ -152,24 +155,24 @@ function nowGanerateGame() {
             });
         }
     }
-    function checkPositionWin(randomArrNum) {
-        let checkNum = 0;
-        let couneter = 0;
-        randomArrNum.forEach((el, idx) => {
-            for (let i = idx; i <= 15; i++) {
-                if (el > randomArrNum[i]) {
-                    couneter++;
-                }
-            }
-        });
-        console.log(couneter);
-        if (couneter % 2 == 1) {
-            return 1;
-        }
-        return 0;
-    }
 }
 nowGanerateGame();
+
+function checkPositionWin(randomArrNum) {
+    let checkNum = 0;
+    let couneter = 0;
+    randomArrNum.forEach((el, idx) => {
+        for (let i = idx; i <= 15; i++) {
+            if (el > randomArrNum[i]) {
+                couneter++;
+            }
+        }
+    });
+    if (couneter % 2 == 1) {
+        return 1;
+    }
+    return 0;
+}
 const btnNewGame = document.querySelector("#btn-generation");
 btnNewGame.addEventListener("click", () => {
     window.location.reload();
@@ -178,7 +181,6 @@ btnNewGame.addEventListener("click", () => {
 });
 
 function stopWatch() {
-    // console.log(Date.parse(new Date()));
     let seconds = 0;
     let minutes = 0;
     let hourse = 0;
