@@ -13,7 +13,7 @@ function nowGanerateGame() {
     const spanStep = document.querySelector("#step");
     spanStep.textContent = counterStep;
     generateRandomNumArr();
-
+    // checkPositionWin(randomArrNum);
     function generateHTMLSquare(id) {
         const square = document.createElement("div"),
             p = document.createElement("p");
@@ -44,6 +44,7 @@ function nowGanerateGame() {
                 randomArrNum.push(num);
             }
         }
+        if (checkPositionWin(randomArrNum)) nowGanerateGame();
     }
 
     function creatingSquares() {
@@ -150,6 +151,22 @@ function nowGanerateGame() {
                 // nowGanerateGame();
             });
         }
+    }
+    function checkPositionWin(randomArrNum) {
+        let checkNum = 0;
+        let couneter = 0;
+        randomArrNum.forEach((el, idx) => {
+            for (let i = idx; i <= 15; i++) {
+                if (el > randomArrNum[i]) {
+                    couneter++;
+                }
+            }
+        });
+        console.log(couneter);
+        if (couneter % 2 == 1) {
+            return 1;
+        }
+        return 0;
     }
 }
 nowGanerateGame();
