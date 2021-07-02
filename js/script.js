@@ -2,11 +2,44 @@
 const field = document.querySelector(".field"),
     dist = 147,
     modalWin = document.querySelector(".modal-window-win"),
-    boxStopWatch = document.querySelector("#stopwatch");
+    boxStopWatch = document.querySelector("#stopwatch"),
+    newStyle = document.querySelector(".new-style"),
+    head = document.querySelector("head");
+
+const linkStyle = document.createElement("link");
+linkStyle.rel = "stylesheet";
+linkStyle.href = "css/style-new-disign.css";
+linkStyle.id = "linkStyle";
+
+let getStyle = localStorage.getItem("triggerNewStyle");
+
+function functionChangeStyle() {
+    if (localStorage.getItem("triggerNewStyle") === "old") {
+        head.append(linkStyle);
+        localStorage.setItem("triggerNewStyle", "new");
+    } else if (localStorage.getItem("triggerNewStyle") === "new") {
+        localStorage.setItem("triggerNewStyle", "old");
+        document.querySelector("#linkStyle").remove();
+    }
+}
+function onOldStyle() {
+    localStorage.setItem("triggerNewStyle", "old");
+    if (document.querySelector("#linkStyle")) {
+        document.querySelector("#linkStyle").remove();
+    }
+}
+function onNewStyle() {
+    head.append(linkStyle);
+    localStorage.setItem("triggerNewStyle", "new");
+}
+console.log(localStorage.getItem("triggerNewStyle"));
+getStyle === "old" ? onOldStyle() : onNewStyle();
+
+newStyle.addEventListener("click", functionChangeStyle);
 
 let counerStopTimer = 0;
-
 const checkPosition = {};
+
 function nowGanerateGame() {
     const spanStep = document.querySelector("#step");
     const position = {};
