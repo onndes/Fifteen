@@ -11,6 +11,9 @@ linkStyle.rel = "stylesheet";
 linkStyle.href = "css/style-new-disign.css";
 linkStyle.id = "linkStyle";
 
+if (localStorage.getItem("triggerNewStyle") != "new") {
+    localStorage.setItem("triggerNewStyle", "old");
+}
 let getStyle = localStorage.getItem("triggerNewStyle");
 
 function functionChangeStyle() {
@@ -32,8 +35,11 @@ function onNewStyle() {
     head.append(linkStyle);
     localStorage.setItem("triggerNewStyle", "new");
 }
-console.log(localStorage.getItem("triggerNewStyle"));
-getStyle === "old" ? onOldStyle() : onNewStyle();
+if (getStyle === "old") {
+    onOldStyle();
+} else if (getStyle === "new") {
+    onNewStyle();
+}
 
 newStyle.addEventListener("click", functionChangeStyle);
 
